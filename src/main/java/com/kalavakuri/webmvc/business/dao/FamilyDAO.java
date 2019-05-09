@@ -9,4 +9,6 @@ public interface FamilyDAO {
 	public void saveFamilyMember(FamilyVO familyVO);
 
 	public List<FamilyVO> getAllFamilyMembers();
+
+	public int familyCount();
 }

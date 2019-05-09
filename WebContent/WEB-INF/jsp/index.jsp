@@ -12,6 +12,25 @@
 <body>
 <center><h1><spring:message code="welcomeMessage"/> </h1></center>
 <center>
+	<form:form action="registerFamilyMember" modelAttribute="family" method="post">
+		<table>
+			<tr>
+				<td><spring:message code="familyMemberName"/> </td>
+				<td><form:input path="familyMemberName"/></td>
+			</tr>
+			<tr>
+				<td><spring:message code="familyMemberAge"/> </td>
+				<td>
+					<form:select path="familyMemberAge" items="${familyMemberAges}"/>
+				</td>
+			</tr>
+			<tr>
+				<td><input type="submit" value="Register"></td>
+			</tr>
+		</table>
+	</form:form>
+</center>
+<center>
 	<table border="1">
 		<c:forEach items="${family.familyVOs}" var="familiMember">
 			<tr>

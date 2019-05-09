@@ -34,6 +34,12 @@ public class FamilyDAOImpl implements FamilyDAO {
 		return jdbcTemplate.query(BusinessConstants.FAMILY_SELECT_QUERY, this::familyRowMapper);
 	}
 
+	@Override
+	public int familyCount() {
+
+		return jdbcTemplate.queryForObject(BusinessConstants.FAMILY_MEMBER_COUNT, null, Integer.class);
+	}
+
 	private FamilyVO familyRowMapper(ResultSet resultSet, int rowNum) throws SQLException {
 
 		FamilyVO familyVO = new FamilyVO();

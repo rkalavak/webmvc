@@ -17,6 +17,7 @@ public class FamilyServiceImpl implements FamilyService {
 	@Override
 	public void saveFamilyMember(FamilyVO familyVO) {
 
+		familyVO.setFamilyId(familyDAO.familyCount());
 		familyDAO.saveFamilyMember(familyVO);
 
 	}
