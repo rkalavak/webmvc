@@ -22,7 +22,7 @@ public class WelcomeController {
 	public ModelAndView welcomePage() {
 
 		FamilyVO allFamilyMembers = familyService.getAllFamilyMembers();
-		ModelAndView modelAndView = new ModelAndView("index", "family", allFamilyMembers);
+		ModelAndView modelAndView = new ModelAndView("Index", "family", allFamilyMembers);
 
 		List<String> familyMemberAges = new ArrayList<String>();
 
