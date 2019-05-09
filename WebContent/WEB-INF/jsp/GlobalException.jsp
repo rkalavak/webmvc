@@ -10,7 +10,7 @@
 <body>
 	<center>
 		<h1>
-			<spring:message code="exceptionMessage" />
+			<img alt="" src="images/InternalServerError.jpg"/>
 		</h1>
 	</center>
 </body>
