@@ -26,7 +26,8 @@ public class ApplicationInitializer implements WebApplicationInitializer {
 		dispatcher.addMapping("/");
 
 		// DataSource profile activation
-		servletContext.setInitParameter("spring.profiles.active", "hikariDataSource");
+		// servletContext.setInitParameter("spring.profiles.active", "hikari_ds");
+		servletContext.setInitParameter("spring.profiles.active", "basic_ds");
 	}
 
 }

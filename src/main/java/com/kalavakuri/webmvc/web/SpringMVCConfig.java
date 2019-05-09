@@ -1,10 +1,13 @@
 package com.kalavakuri.webmvc.web;
 
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.http.CacheControl;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -38,7 +41,8 @@ public class SpringMVCConfig implements WebMvcConfigurer {
 
 	@Override
 	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/jsp/resources/");
+		registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/jsp/resources/")
+				.setCacheControl(CacheControl.maxAge(30, TimeUnit.DAYS).cachePublic());
 	}
 
 	@Override
