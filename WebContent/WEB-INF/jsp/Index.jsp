@@ -39,7 +39,9 @@
 			</table>
 		</form:form>
 	</center>
-	<br/><br/><br/>
+	<br />
+	<br />
+	<br />
 	<center>
 		<c:if test="${fn:length(family.familyVOs) gt 0}">
 			<table width="50%" style="text-align: left;">
