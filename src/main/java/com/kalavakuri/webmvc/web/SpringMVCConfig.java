@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
@@ -20,8 +21,11 @@ public class SpringMVCConfig implements WebMvcConfigurer {
 	@Bean
 	public ViewResolver viewResolver() {
 
-		ViewResolver viewResolver = new InternalResourceViewResolver("/WEB-INF/jsp/", ".jsp");
-		return viewResolver;
+		InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
+		internalResourceViewResolver.setPrefix("/WEB-INF/jsp/");
+		internalResourceViewResolver.setSuffix(".jsp");
+		internalResourceViewResolver.setViewClass(JstlView.class);
+		return internalResourceViewResolver;
 	}
 
 	@Bean
