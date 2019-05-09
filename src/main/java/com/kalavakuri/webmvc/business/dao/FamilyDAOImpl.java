@@ -20,6 +20,7 @@ public class FamilyDAOImpl implements FamilyDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
+	@SuppressWarnings("unused")
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
