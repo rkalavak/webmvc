@@ -18,7 +18,9 @@ public class FamilyServiceImpl implements FamilyService {
 	public void saveFamilyMember(FamilyVO familyVO) {
 
 		familyVO.setFamilyId(familyDAO.familyCount());
+		familyVO.getFamilyAddress().setAddressId(familyDAO.addressCount());
 		familyDAO.saveFamilyMember(familyVO);
+		familyDAO.saveAddress(familyVO);
 
 	}
 

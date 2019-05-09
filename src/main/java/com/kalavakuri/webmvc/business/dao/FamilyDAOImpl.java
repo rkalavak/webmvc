@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kalavakuri.webmvc.business.constant.BusinessConstants;
 import com.kalavakuri.webmvc.business.util.BusinessUtil;
+import com.kalavakuri.webmvc.business.valueobject.FamilyAddress;
 import com.kalavakuri.webmvc.business.valueobject.FamilyVO;
 
 @Repository
@@ -40,12 +41,29 @@ public class FamilyDAOImpl implements FamilyDAO {
 		return jdbcTemplate.queryForObject(BusinessConstants.FAMILY_MEMBER_COUNT, null, Integer.class);
 	}
 
+	@Override
+	public int addressCount() {
+
+		return jdbcTemplate.queryForObject(BusinessConstants.FAMILY_MEMBER_ADDRESS_COUNT, null, Integer.class);
+	}
+
+	@Override
+	public void saveAddress(FamilyVO familyVO) {
+
+		jdbcTemplate.update(BusinessConstants.FAMILY_ADDRESS_INSERT_QUERY, BusinessUtil.createInsertAddress(familyVO));
+
+	}
+
 	private FamilyVO familyRowMapper(ResultSet resultSet, int rowNum) throws SQLException {
 
 		FamilyVO familyVO = new FamilyVO();
 		familyVO.setFamilyId(resultSet.getInt(BusinessConstants.FAMILY_FAMILY_ID));
 		familyVO.setFamilyMemberName(resultSet.getString(BusinessConstants.FAMILY_FAMILY_MEMBER_NAME));
 		familyVO.setFamilyMemberAge(resultSet.getInt(BusinessConstants.FAMILY_FAMILY_MEMBER_AGE));
+
+		FamilyAddress familyAddress = new FamilyAddress();
+		familyAddress.setAddress(resultSet.getString(BusinessConstants.FAMILY_ADDRESS));
+		familyVO.setFamilyAddress(familyAddress);
 
 		return familyVO;
 	}

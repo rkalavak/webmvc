@@ -12,6 +12,7 @@ public class FamilyVO extends ValueObject {
 	private String familyMemberName;
 	private int familyMemberAge;
 	private List<FamilyVO> familyVOs;
+	private FamilyAddress familyAddress;
 
 	/**
 	 * @return the familyId
@@ -71,6 +72,21 @@ public class FamilyVO extends ValueObject {
 	 */
 	public void setFamilyVOs(List<FamilyVO> familyVOs) {
 		this.familyVOs = familyVOs;
+	}
+
+	/**
+	 * @return the familyAddress
+	 */
+	public FamilyAddress getFamilyAddress() {
+		return familyAddress;
+	}
+
+	/**
+	 * @param familyAddress
+	 *            the familyAddress to set
+	 */
+	public void setFamilyAddress(FamilyAddress familyAddress) {
+		this.familyAddress = familyAddress;
 	}
 
 }
