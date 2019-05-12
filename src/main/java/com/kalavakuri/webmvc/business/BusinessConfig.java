@@ -3,7 +3,6 @@ package com.kalavakuri.webmvc.business;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +24,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @PropertySource("classpath:basicDataSource.properties")
 public class BusinessConfig {
 
-	@Autowired
+	// @Autowired
 	private Environment environment;
 
 	@Profile("hikari_ds")
