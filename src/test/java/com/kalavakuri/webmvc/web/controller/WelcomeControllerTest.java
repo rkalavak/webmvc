@@ -1,7 +1,13 @@
 package com.kalavakuri.webmvc.web.controller;
 
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasProperty;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -55,21 +61,30 @@ public class WelcomeControllerTest {
 		FamilyVO allFamilyMembers = getAllFamilyMembers();
 
 		when(familyService.getAllFamilyMembers()).thenReturn(allFamilyMembers);
-		mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name("Index"));
+		mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name("Index"))
+				.andExpect(model().attribute("family", allFamilyMembers))
+				.andExpect(model().attribute("family", hasProperty("familyVOs", hasSize(1))))
+				.andExpect(model().attribute("family",
+						hasProperty("familyVOs",
+								hasItem(allOf(hasProperty("familyId", is(1)),
+										hasProperty("familyMemberName", is("Ramachandrappa Kalavakuri")),
+										hasProperty("familyMemberAge", is(36)))))));
 	}
 
 	/**
 	 * @return
 	 */
 	private FamilyVO getAllFamilyMembers() {
+
 		FamilyVO allFamilyMembers = new FamilyVO();
 		FamilyVO familyVO = new FamilyVO();
-		familyVO.setFamilyId(Integer.parseInt(environment.getProperty("familyId")));
-		familyVO.setFamilyMemberName(environment.getProperty("familyMemberName"));
-		familyVO.setFamilyMemberAge(Integer.parseInt(environment.getProperty("familyMemberAge")));
+		familyVO.setFamilyId(1);
+		familyVO.setFamilyMemberName("Ramachandrappa Kalavakuri");
+		familyVO.setFamilyMemberAge(36);
 
 		FamilyAddress familyAddress = new FamilyAddress();
-		familyAddress.setAddress(environment.getProperty("familyAddress"));
+		familyAddress.setAddress(
+				"Flat no: 305, 2nd Floor, Prakasa Pride Apartments, Opp To J.P.Morgan, Kadubesinahalli, Bangalore - 560087");
 		familyVO.setFamilyAddress(familyAddress);
 
 		List<FamilyVO> familyVOs = new ArrayList<FamilyVO>();
