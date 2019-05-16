@@ -58,9 +58,9 @@ public class FamilyDAOImpl implements FamilyDAO {
 	private FamilyVO familyRowMapper(ResultSet resultSet, int rowNum) throws SQLException {
 
 		FamilyVO familyVO = new FamilyVO();
-		familyVO.setFamilyId(resultSet.getInt(BusinessConstants.FAMILY_FAMILY_ID));
-		familyVO.setFamilyMemberName(resultSet.getString(BusinessConstants.FAMILY_FAMILY_MEMBER_NAME));
-		familyVO.setFamilyMemberAge(resultSet.getInt(BusinessConstants.FAMILY_FAMILY_MEMBER_AGE));
+		familyVO.setFamilyId(resultSet.getInt(BusinessConstants.FAMILY_ID));
+		familyVO.setFamilyMemberName(resultSet.getString(BusinessConstants.FAMILY_MEMBER_NAME));
+		familyVO.setFamilyMemberAge(resultSet.getInt(BusinessConstants.FAMILY_MEMBER_AGE));
 
 		FamilyAddress familyAddress = new FamilyAddress();
 		familyAddress.setAddress(resultSet.getString(BusinessConstants.FAMILY_ADDRESS));
