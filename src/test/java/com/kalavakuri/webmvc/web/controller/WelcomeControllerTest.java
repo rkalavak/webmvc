@@ -1,4 +1,4 @@
-package com.kalavakuri.webmvc.controller;
+package com.kalavakuri.webmvc.web.controller;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -26,7 +26,6 @@ import com.kalavakuri.webmvc.business.service.FamilyService;
 import com.kalavakuri.webmvc.business.valueobject.FamilyAddress;
 import com.kalavakuri.webmvc.business.valueobject.FamilyVO;
 import com.kalavakuri.webmvc.init.ApplicationInitializer;
-import com.kalavakuri.webmvc.web.controller.WelcomeController;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ApplicationInitializer.class })
