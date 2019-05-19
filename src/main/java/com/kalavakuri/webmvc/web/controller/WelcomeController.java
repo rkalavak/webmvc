@@ -3,6 +3,7 @@ package com.kalavakuri.webmvc.web.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,12 +16,15 @@ import com.kalavakuri.webmvc.business.valueobject.FamilyVO;
 @Controller
 public class WelcomeController {
 
+	private static Logger logger = Logger.getLogger(WelcomeController.class);
+
 	@Autowired
 	private FamilyService familyService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView welcomePage(String welcomeMessage) {
 
+		logger.info("Fetching all family messages");
 		FamilyVO allFamilyMembers = familyService.getAllFamilyMembers();
 		ModelAndView modelAndView = new ModelAndView("Index", "family", allFamilyMembers);
 
